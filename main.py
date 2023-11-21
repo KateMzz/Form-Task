@@ -14,7 +14,14 @@ app = FastAPI()
 async def get_form(
     validator: FormValidator = Depends(FormValidator),
     collection: AsyncIOMotorCollection = Depends(get_collection),
-):
+)-> Union[str, Dict]:
+    """
+     Асинхронно обрабатывает запрос на получение шаблона формы по валидированным данным.
+
+    :param validator: Валидированные данные формы.
+    :param collection: Коллекция MongoDB.
+    :return: Строка с именем найденного шаблона или словарь с категориями полей.
+    """
     try:
         await populate_forms(collection)
         output_validator = OutputValidator.from_input_validator(validator)
