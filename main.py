@@ -10,15 +10,6 @@ from src.db_module import get_collection
 app = FastAPI()
 
 
-fields = {
-    "user_email": "vsdj@gmail.com",
-    "user_phone": "+73333333333",
-    "user_birthday": "2022-01-01",
-    "us=er_gender": "Some text",
-    "user": "Some text",
-}
-
-
 @app.post("/get_form")
 async def get_form(
     validator: FormValidator = Depends(FormValidator),
