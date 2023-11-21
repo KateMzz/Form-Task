@@ -5,6 +5,7 @@
 ```bash
 git clone https://github.com/KateMzz/Form-Task.git
 ```
+```bash
 cd Form-Task
 ```
 
