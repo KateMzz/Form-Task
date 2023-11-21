@@ -25,5 +25,4 @@ async def get_form(
         raise HTTPException(status_code=422, detail=str(e))
 
 
-if __name__ == "__main__":
-    asyncio.run(get_form())
+
