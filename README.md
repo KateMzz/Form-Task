@@ -9,11 +9,10 @@ git clone https://github.com/KateMzz/Form-Task.git
 2. Создайте .env в корне проекта
 
    ```bash
-      MONGO_USER=user
-      MONGO_PASS=password
+      
       DB_NAME=your_database
       DB_COLLECTION=your_db
-      IS_TESTING=False
+      
     ```
 3. Используйте следующие команды для запуска проекта:
 
@@ -27,7 +26,7 @@ git clone https://github.com/KateMzz/Form-Task.git
     ```bash
     docker exec -it get_form pytest
     ```
-
+##
     ```
 
 
