@@ -11,11 +11,9 @@ cd Form-Task
 
 2. Создайте .env в корне проекта
 
-   ```bash
-      
-      DB_NAME=your_database
-      DB_COLLECTION=your_db
-      
+   ```bash  
+   DB_NAME=your_database
+   DB_COLLECTION=your_db    
     ```
 3. Используйте следующие команды для запуска проекта:
 
