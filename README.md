@@ -5,6 +5,8 @@
 ```bash
 git clone https://github.com/KateMzz/Form-Task.git
 ```
+cd Form-Task
+```
 
 2. Создайте .env в корне проекта
 
