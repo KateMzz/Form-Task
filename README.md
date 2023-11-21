@@ -27,5 +27,10 @@ cd Form-Task
     ```bash
     docker exec -it get_form pytest
     ```
-##
+## Swagger UI
+В Swagger UI вы сможете ознакомиться с документацией API и протестировать запросы
+
+```bash
+http://localhost:8000/docs
+```
 
