@@ -11,12 +11,14 @@ CLIENT = AsyncIOMotorClient(f"mongodb://mongo:27017/{DB_NAME}")
 
 
 async def get_collection() -> AsyncIOMotorCollection:
+    """создает и возвращает асинхронный объект коллекции MongoDB"""
     db = CLIENT[DB_NAME]
     collection = db[DB_COLLECTION]
     return collection
 
 
-async def get_pipline(validator: OutputValidator):
+async def get_pipline(validator: OutputValidator) -> List[dict]:
+    """Конвейер для поиска формы по заданным категориям полей"""
     match_pipeline = [
         {
             "$addFields": {
