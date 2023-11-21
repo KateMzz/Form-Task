@@ -1,0 +1,43 @@
+[
+  {
+    "name": "FormUser",
+    "fields": {
+      "user_email": "email",
+      "user_phone": "phone",
+      "user_gender": "text",
+      "user_birthday": "date"
+    }
+  },
+  {
+    "name": "FormAnimal",
+    "fields": {
+      "animal_breed": "text",
+      "vaccination_date": "date",
+      "animal_name": "text",
+      "owner_cell": "phone"
+    }
+  },
+  {
+    "name": "BookForm",
+    "fields": {
+      "book_name": "text",
+      "author_name": "text",
+      "issued_date": "date"
+    }
+  },
+    {
+    "name": "CandyForm",
+    "fields": {
+      "candy_name": "text",
+      "candy_taste": "text",
+      "issued_date": "date"
+    }
+  },
+  {
+    "name": "NewForm2",
+    "fields": {
+      "hello": "text"
+    }
+
+  }
+]

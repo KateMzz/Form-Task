@@ -1,0 +1,29 @@
+[tool.poetry]
+name = ""
+version = "0.1.0"
+description = ""
+authors = ["KateM_zz <zupperu@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
+pydantic = {extras = ["email"], version = "^2.5.0"}
+motor = {extras = ["asyncio"], version = "^3.3.2"}
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+aiofiles = "^23.2.1"
+cachetools = "^5.3.2"
+httpx = "^0.25.1"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py310']
+include = '\.pyi?$'
+line-length = 100

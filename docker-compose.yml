@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mongo:
+    container_name: "mongo"
+    image: mongo:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./docker_volumes/mongo:/data/db
+    healthcheck:
+      test: echo 'db.stats().ok'
+      interval: 3s
+      timeout: 2s
+      retries: 3
+    ports:
+      - "27017:27017"
+    networks:
+      - custom
+
+  my-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: get_form
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+    command: >
+      uvicorn main:app --host 0.0.0.0 --reload
+
+    ports:
+      - "8000:8000"
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge
