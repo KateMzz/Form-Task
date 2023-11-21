@@ -1,4 +1,4 @@
-import asyncio
+from typing import Union, Dict
 from pydantic_core import ValidationError
 from fastapi import FastAPI, HTTPException, Depends
 from src.schemas.sch_validators import FormValidator, OutputValidator
@@ -14,7 +14,7 @@ app = FastAPI()
 async def get_form(
     validator: FormValidator = Depends(FormValidator),
     collection: AsyncIOMotorCollection = Depends(get_collection),
-)-> Union[str, Dict]:
+) -> Union[str, Dict]:
     """
      Асинхронно обрабатывает запрос на получение шаблона формы по валидированным данным.
 
@@ -30,6 +30,3 @@ async def get_form(
         return template
     except ValidationError as e:
         raise HTTPException(status_code=422, detail=str(e))
-
-
-

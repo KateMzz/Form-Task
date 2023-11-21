@@ -20,7 +20,8 @@ CACHE = TTLCache(maxsize=2000, ttl=2000)
 
 
 async def read_form_templates(file_name: str) -> List[Dict[str, Any]]:
-    """Асинхронно читает содержимое файла с шаблонами форм и возвращает список словарей."""
+    """Асинхронно читает содержимое файла с шаблонами
+    форм и возвращает список словарей."""
     async with aiofiles.open(file_name, "r") as file:
         contents = await file.read()
     return json.loads(contents)
@@ -29,7 +30,8 @@ async def read_form_templates(file_name: str) -> List[Dict[str, Any]]:
 async def get_existing_document(
     collection: AsyncIOMotorCollection, form_name: str
 ) -> Optional[Dict[str, Any]]:
-    """Асинхронно получает существующий документ из коллекции или кэша по имени формы."""
+    """Асинхронно получает существующий документ
+    из коллекции или кэша по имени формы."""
     return CACHE.get(form_name) or await collection.find_one({"name": form_name})
 
 
@@ -39,7 +41,8 @@ async def update_cache_and_build_operation(
     form_template: Dict[str, Any],
     insert_operations: List[UpdateOne],
 ) -> None:
-    """"Асинхронно обновляет кеш, строит операцию вставки в коллекцию и добавляет ее в список операций."""
+    """ "Асинхронно обновляет кеш, строит операцию вставки в
+    коллекцию и добавляет ее в список операций."""
     existing_document = await get_existing_document(collection, form_name)
     CACHE[form_name] = existing_document
 
@@ -54,7 +57,7 @@ async def update_cache_and_build_operation(
 
 
 async def populate_forms(collection: AsyncIOMotorCollection) -> None:
-"""Асинхронно заполняет коллекцию формами, считанными из файла шаблонов."""
+    """Асинхронно заполняет коллекцию формами, считанными из файла шаблонов."""
     try:
         form_templates = await read_form_templates(FILE_NAME)
         insert_operations = []
@@ -75,7 +78,8 @@ async def populate_forms(collection: AsyncIOMotorCollection) -> None:
 async def retrieve_form(
     validator: OutputValidator, collection: AsyncIOMotorCollection
 ) -> str | Dict:
-"""Асинхронно возвращает шаблон формы, соответствующий переданным валидированным данным или словарь с полями и типом данных"""
+    """Асинхронно возвращает шаблон формы, соответствующий переданным
+     валидированным данным или словарь с полями и типом данных"""
     try:
         match_pipeline = await get_pipline(validator)
         template = await collection.aggregate(match_pipeline).next()

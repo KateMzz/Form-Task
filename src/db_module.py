@@ -1,3 +1,5 @@
+from typing import List
+
 from src.schemas.sch_validators import OutputValidator
 from motor.motor_asyncio import AsyncIOMotorCollection, AsyncIOMotorClient
 import os
