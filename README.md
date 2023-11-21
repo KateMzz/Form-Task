@@ -27,8 +27,4 @@ git clone https://github.com/KateMzz/Form-Task.git
     docker exec -it get_form pytest
     ```
 ##
-    ```
 
-
-
-## Additional Information
