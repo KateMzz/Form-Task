@@ -23,14 +23,16 @@ class OutputValidator(BaseModel):
         use_enum_values = True
 
     @classmethod
-    def from_input_validator(cls, input_validator: FormValidator):
+    def from_input_validator(cls, input_validator: FormValidator) -> Dict[str, FieldCategory]:
+        """Категоризация полей на основе input_validator и создание нового OutputValidator"""
         categorized_fields = {
             key: cls.categorize_field(value) for key, value in input_validator.fields.items()
         }
         return cls(categorized_fields=categorized_fields)
 
     @staticmethod
-    def categorize_field(data):
+    def categorize_field(data: Union[date, EmailStr, str]) -> FieldCategory:
+        """Пользовательская логика для категоризации поля на основе его типа данных"""
         if "@" in data and EmailStr._validate(data):
             return FieldCategory.EMAIL
         elif re.match(r"^\d{2}.\d{2}.\d{4}$", data) or re.match(r"^\d{4}-\d{2}-\d{2}$", data):
